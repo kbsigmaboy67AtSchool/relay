@@ -43,7 +43,6 @@ export class N3xnTransport {
     });
   }
 
-  // Set up signaling handlers for WebRTC
   setupSignaling() {
     this.on('RTC_OFFER', async (data) => {
       const pc = this._createPeerConnection(data.senderJoinHash);
@@ -65,7 +64,6 @@ export class N3xnTransport {
     });
   }
 
-  // Create P2P DataChannel connection to target device host
   async connectToPeer(targetJoinHash) {
     const pc = this._createPeerConnection(targetJoinHash);
     const dc = pc.createDataChannel('n3xn-kv-channel');
@@ -107,7 +105,6 @@ export class N3xnTransport {
     };
   }
 
-  // Send message over WebRTC P2P DataChannel with automatic WSS relay fallback
   sendP2P(targetJoinHash, payload) {
     const dc = this.dataChannels.get(targetJoinHash);
     if (dc && dc.readyState === 'open') {
@@ -115,7 +112,6 @@ export class N3xnTransport {
       return 'webrtc-p2p';
     }
 
-    // Fallback to WSS relay
     this.send('WSS_RELAY_MSG', { targetJoinHash, message: payload });
     return 'wss-relay';
   }
