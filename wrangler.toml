@@ -3,10 +3,29 @@ main = "src/worker.js"
 compatibility_date = "2026-01-01"
 compatibility_flags = ["nodejs_compat"]
 
+# --- 1. Cloudflare KV Namespaces (Multi-store support) ---
+[[kv_namespaces]]
+binding = "PRIMARY_KV"
+id = "<YOUR_PRIMARY_KV_NAMESPACE_ID>"
+
+[[kv_namespaces]]
+binding = "CACHE_KV"
+id = "<YOUR_CACHE_KV_NAMESPACE_ID>"
+
+# --- 2. Cloudflare D1 Serverless SQL Database ---
+[[d1_databases]]
+binding = "DB"
+database_name = "n3xn-db"
+database_id = "<YOUR_D1_DATABASE_ID>"
+
+# --- 3. Cloudflare R2 Bucket (Blobs & Large Media Storage) ---
+[[r2_buckets]]
+bucket_name = "n3xn-storage-bucket"
+binding = "BUCKET"
+
+# --- 4. Environment Variables ---
 [vars]
 ENVIRONMENT = "production"
-
-# Route rules for custom domains if attached directly
-# [[routes]]
-# pattern = "relay.n3xn.dev/*"
-# zone_name = "n3xn.dev"
+GIT_OWNER = "kbsigmaboy67AtSchool"
+GIT_REPO = "relay"
+# Secure GitHub token should be set via: wrangler secret put GITHUB_TOKEN
