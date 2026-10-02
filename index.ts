@@ -2,6 +2,15 @@
  * Universal WSS Relay — Bun
  *   bun run index.ts
  */
+/*
+ * Copyright 2026 Xclounkit234X
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ */
 const port = Number(process.env.PORT || 8787);
 const rooms = new Map<string, Set<any>>();
 
