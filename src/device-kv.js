@@ -6,7 +6,6 @@ export class N3xnDeviceKVHost {
   }
 
   async init() {
-    // Open IndexedDB instance on the hosting device
     this.db = await new Promise((resolve, reject) => {
       const req = indexedDB.open('n3xn_device_kv', 1);
       req.onupgradeneeded = () => req.result.createObjectStore('kv_store');
@@ -14,10 +13,8 @@ export class N3xnDeviceKVHost {
       req.onerror = () => reject(req.error);
     });
 
-    // Register this device with the Cloudflare Worker relay
     await this.transport.rpc('REGISTER_DEVICE_CLOUD', { deviceName: this.deviceName });
 
-    // Listen for incoming P2P requests from remote clients
     this.transport.on('P2P_MESSAGE', async (evt) => {
       const { sender, data } = evt;
       if (!data || !data.rpcId) return;
@@ -46,7 +43,6 @@ export class N3xnDeviceKVHost {
   }
 }
 
-// Client Driver to query a remote Device Cloud Host over WebRTC
 export class N3xnDeviceKVClient {
   constructor(transport, hostJoinHash) {
     this.transport = transport;
