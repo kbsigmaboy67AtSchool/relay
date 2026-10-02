@@ -35,7 +35,7 @@ An EaglercraftX-inspired, origin-agnostic networking transport, multi-store key-
             +-------------------------------+                   +-------------------------------+
             |                               |                                                   |
 +-----------v-----------+       +-----------v-----------+                           +-----------v-----------+
-|   Cloudflare Stores   |       |      Git KV Proxy     |                           |   Device-as-Cloud Host   |
+|   Cloudflare Stores   |       |      Git KV Proxy     |                           |   Device-as-Cloud Host|
 | (KV / D1 SQL / R2)    |       | (GitHub API + Tokens) |                           | (WebRTC + IndexedDB)  |
 +-----------------------+       +-----------------------+                           +-----------------------+
 
