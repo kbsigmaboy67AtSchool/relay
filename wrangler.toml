@@ -1,0 +1,12 @@
+name = "n3xn-relay-worker"
+main = "src/worker.js"
+compatibility_date = "2026-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENVIRONMENT = "production"
+
+# Route rules for custom domains if attached directly
+# [[routes]]
+# pattern = "relay.n3xn.dev/*"
+# zone_name = "n3xn.dev"
