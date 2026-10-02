@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "include": [
+    "/ws",
+    "/api/*"
+  ],
+  "exclude": [
+    "/static/*",
+    "/*.html",
+    "/*.css",
+    "/*.js"
+  ]
+}
